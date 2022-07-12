@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .myText {
+            color: #fff;
+            mix-blend-mode: difference;
+        }
+    </style>
+</head>
+<body id="my_body" style="transition: background-color 2s ease-in-out;">
+    <div>
+        <div>
+            <span id="my_label" class="myText">Time : </span>
+            <span id="my_timer" class="myText"></span>
+        </div>
+        <div id="my_box" style="
+            position:absolute;
+            top:50%;
+            left:50%;
+            width: 200px;
+            text-align: center;
+            margin-top:-50px; /* this is half the height of your div*/  
+            margin-left:-100px; /*this is half of width of your div*/
+            padding: 100px;
+        ">
+            <div id="box_desc" class="myText"></div>
+        </div>
+    </div>
+
+    <script>
+        var myVar;
+        var index=0;
+        
+        var myTimer = setInterval(MyTimer,1000);
+        var myBgColor = setInterval(GantiWarna,2000);
+
+        function MyTimer() {
+            var d = new Date();
+            var t = d.toLocaleTimeString();
+
+            document.getElementById("my_timer").innerHTML = t;
+        }
+  
+        function GantiWarna() {
+            var bgColor = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'purple'];
+            // var index = Math.floor(Math.random() * 10);
+
+            if (index == bgColor.length) index = 0;
+
+            document.getElementById("my_body").style.backgroundColor = bgColor[index];
+            document.getElementById("box_desc").innerHTML = "bgColor[" + index + "] = " + bgColor[index];
+
+            index++;
+        }
+      </script>
+    </body>
+</html>
